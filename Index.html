@@ -1,75 +1,471 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vegano Fácil</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #ffffff;
-      color: #333;
-    }
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      text-align: center;
-    }
-    img {
-      width: 100%;
-      max-width: 600px;
-      border-radius: 10px;
-      margin: 30px auto;
-      display: block;
-    }
-    h1 {
-      color: #2e7d32;
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-    a.button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 30px;
-      font-size: 18px;
-      font-weight: bold;
-      color: white;
-      background-color: #4CAF50;
-      border-radius: 8px;
-      text-decoration: none;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    a.button:hover {
-      background-color: #2e7d32;
-    }
-    footer {
-      margin-top: 50px;
-      font-size: 12px;
-      color: #888;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delícias Veganas - E-book de Receitas Veganas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #FF6B35;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #E55A2B;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Seções */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2E7D32;
+        }
+
+        /* Benefícios */
+        .benefits {
+            background: #f8f9fa;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Conteúdo do E-book */
+        .content-preview {
+            background: white;
+        }
+
+        .content-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .content-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        /* Depoimentos */
+        .testimonials {
+            background: #f8f9fa;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        /* Preço */
+        .pricing {
+            background: white;
+            text-align: center;
+        }
+
+        .price-box {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            opacity: 0.7;
+            font-size: 1.2rem;
+        }
+
+        .current-price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .price-description {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* FAQ */
+        .faq {
+            background: #f8f9fa;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .faq-answer {
+            padding: 1rem;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: #2E7D32;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .current-price {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🌱 VEGANO FÁCIL</h1>
-    <p>Receitas veganas práticas, baratas e deliciosas mesmo se você nunca cozinhou!</p>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="hero fade-in">
+                <h1>🌱 Delícias Veganas</h1>
+                <p>Transforme sua cozinha com mais de 100 receitas veganas deliciosas, práticas e nutritivas</p>
+                <a href="#comprar" class="cta-button">QUERO MEU E-BOOK AGORA!</a>
+            </div>
+        </div>
+    </header>
 
-    <img src="2025062909481228.jpg" alt="Capa do ebook Vegano Fácil">
+    <!-- Benefícios -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Por que escolher o Delícias Veganas?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Receitas Rápidas</h3>
+                    <p>Pratos deliciosos em até 30 minutos, perfeitos para o dia a dia corrido</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">💚</div>
+                    <h3>100% Vegano</h3>
+                    <p>Todas as receitas são livres de ingredientes de origem animal</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🍽️</div>
+                    <h3>Ingredientes Simples</h3>
+                    <p>Receitas com ingredientes fáceis de encontrar no supermercado</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">📱</div>
+                    <h3>Acesso Imediato</h3>
+                    <p>Baixe agora e comece a cozinhar hoje mesmo</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <p>📘 Receba 2 e-books completos com +50 receitas veganas incríveis e acessíveis.<br>
-    Ideal para quem quer comer bem, economizar e até vender marmitas saudáveis!</p>
+    <!-- Conteúdo do E-book -->
+    <section class="content-preview">
+        <div class="container">
+            <h2 class="section-title">O que você vai encontrar no e-book</h2>
+            <div class="content-list">
+                <div class="content-item">
+                    <h3>🥗 Café da Manhã Energizante</h3>
+                    <p>25 receitas para começar o dia com energia e sabor</p>
+                </div>
+                <div class="content-item">
+                    <h3>🍲 Almoços Nutritivos</h3>
+                    <p>30 opções completas e balanceadas para o almoço</p>
+                </div>
+                <div class="content-item">
+                    <h3>🍝 Jantares Especiais</h3>
+                    <p>25 receitas para impressionar família e amigos</p>
+                </div>
+                <div class="content-item">
+                    <h3>🧁 Sobremesas Irresistíveis</h3>
+                    <p>20 doces veganos que vão surpreender seu paladar</p>
+                </div>
+                <div class="content-item">
+                    <h3>🥤 Bebidas e Smoothies</h3>
+                    <p>15 receitas refrescantes e nutritivas</p>
+                </div>
+                <div class="content-item">
+                    <h3>📋 Bônus Exclusivos</h3>
+                    <p>Lista de compras, dicas de substituições e planejamento de refeições</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <a href="https://payhip.com/b/tXsBh" target="_blank" class="button">🟢 COMPRAR AGORA</a>
+    <!-- Depoimentos -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">O que nossos clientes dizem</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"Nunca imaginei que cozinhar vegano seria tão fácil! As receitas são deliciosas e minha família adora."</p>
+                    <p class="testimonial-author">- Maria Silva, São Paulo</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"O e-book me ajudou a diversificar minha alimentação. Agora tenho receitas para toda semana!"</p>
+                    <p class="testimonial-author">- João Santos, Rio de Janeiro</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"Perfeito para quem está começando no veganismo. Receitas simples e muito saborosas."</p>
+                    <p class="testimonial-author">- Ana Costa, Belo Horizonte</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Preço -->
+    <section class="pricing" id="comprar">
+        <div class="container">
+            <h2 class="section-title">Oferta Especial de Lançamento</h2>
+            <div class="price-box">
+                <p class="original-price">De R$ 97,00</p>
+                <p class="current-price">R$ 47,00</p>
+                <p class="price-description">Acesso vitalício + Bônus exclusivos</p>
+                <a href="#" class="cta-button">COMPRAR AGORA</a>
+                <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                    ⏰ Oferta válida por tempo limitado!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Como recebo o e-book após a compra?
+                </div>
+                <div class="faq-answer">
+                    Após a confirmação do pagamento, você receberá um e-mail com o link para download do e-book em formato PDF.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    As receitas são adequadas para iniciantes?
+                </div>
+                <div class="faq-answer">
+                    Sim! Todas as receitas foram pensadas para serem simples e práticas, perfeitas para quem está começando na culinária vegana.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Posso imprimir o e-book?
+                </div>
+                <div class="faq-answer">
+                    Claro! O e-book está em formato PDF e pode ser impresso quantas vezes quiser para seu uso pessoal.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Há garantia de satisfação?
+                </div>
+                <div class="faq-answer">
+                    Sim! Oferecemos 7 dias de garantia. Se não ficar satisfeito, devolvemos 100% do seu dinheiro.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-      © 2025 Vegano Fácil — Todos os direitos reservados
+        <div class="container">
+            <p>&copy; 2025 Delícias Veganas. Todos os direitos reservados.</p>
+            <p>Transforme sua alimentação com receitas veganas deliciosas!</p>
+        </div>
     </footer>
-  </div>
+
+    <script>
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const isActive = answer.classList.contains('active');
+            
+            // Fechar todas as respostas
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Abrir a resposta clicada se não estava ativa
+            if (!isActive) {
+                answer.classList.add('active');
+            }
+        }
+
+        // Animação de scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animação de entrada dos elementos
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.benefit-card, .content-item, .testimonial').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
